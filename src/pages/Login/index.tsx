@@ -12,7 +12,7 @@ import RightLogo from '../../assets/images/rightLogo.png';
 import { useNavigate } from 'react-router';
 import { GithubFilled, GoogleCircleFilled } from '@ant-design/icons';
 import { loginApi } from '../../services/LoginService';
-import { homepageRoute } from '../../routes/routes.constant';
+import { homepageRoute, signUpRoute } from '../../routes/routes.constant';
 import Cookies from 'js-cookie';
 import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from '../../firebase/firebaseConfig';
@@ -134,10 +134,10 @@ export const LoginPage = () => {
           )}
         </div>
 
-        <div className="-mt-11 mb-2 flex justify-end">
+        <div className="-mt-8 mb-2 flex justify-end">
           <p className="italic">
             Does not have account?{' '}
-            <Button type="link" className="!p-0 italic">
+            <Button type="link" className="!p-0 italic" onClick={() => navigate(signUpRoute)}>
               Signup
             </Button>
           </p>
