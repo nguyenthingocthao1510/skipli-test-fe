@@ -3,14 +3,9 @@ import { LoginPage } from "../pages/Login";
 import { RoutesProps } from "./routeTypes";
 import { homepageRoute, loginRoute, signUpRoute } from "./routes.constant";
 import { lazy } from "react";
-import { Sign } from "crypto";
 import { SignUpPage } from "../pages/SignUp";
 
-const Homepage = lazy(() =>
-  import("../pages/Homepage").then((module) => ({
-    default: module.Homepage,
-  }))
-);
+const Homepage = lazy(() => import("../pages/Homepage"));
 
 const routes: RoutesProps[] = [
   {
@@ -25,14 +20,19 @@ const routes: RoutesProps[] = [
   },
   {
     path: signUpRoute,
-    name: 'signup',
-    element: <SignUpPage />
+    name: "signup",
+    element: <SignUpPage />,
   },
   {
     path: homepageRoute,
     name: "homepage",
-    element: <Homepage />, 
+    element: <Homepage />,
     isPrivate: true,
+  },
+  {
+    path: "*",
+    name: "not-found",
+    element: <div>404 Not Found</div>,
   },
 ];
 
