@@ -24,7 +24,6 @@ export const TaskPage = () => {
 
   return (
     <div className="bg-[#162032] p-6 min-h-screen text-white space-y-6">
-      {/* Header */}
       <div className="flex justify-between items-center">
         <div>
           <h2 className="text-2xl font-bold">{card?.name}</h2>
@@ -46,11 +45,8 @@ export const TaskPage = () => {
         />
       </div>
 
-      {/* Main content */}
       <div className="flex flex-col lg:flex-row gap-6">
-        {/* Left section */}
         <div className="flex-1 space-y-6">
-          {/* Members & Notifications */}
           <Card className="bg-[#1f2933] border-none rounded-lg">
             <div className="flex justify-between text-white">
               <div className="space-y-2 ">
@@ -77,7 +73,6 @@ export const TaskPage = () => {
             </div>
           </Card>
 
-          {/* Description */}
           <Card className="bg-[#1f2933] border-none rounded-lg text-white">
             <div className="flex items-center gap-2 mb-2">
               <AlignLeftOutlined />
@@ -90,7 +85,6 @@ export const TaskPage = () => {
             />
           </Card>
 
-          {/* Activity */}
           <div className="bg-[#1f2933] border-none rounded-lg p-6 flex justify-between">
             <div className="flex items-center gap-2">
               <UnorderedListOutlined />
@@ -101,7 +95,6 @@ export const TaskPage = () => {
             </Button>
           </div>
 
-          {/* Comment */}
           <div className="bg-[#1f2933] border-none rounded-lg flex items-center gap-2 p-6">
             <Button
               icon={<UserOutlined />}
@@ -115,7 +108,6 @@ export const TaskPage = () => {
           </div>
         </div>
 
-        {/* Right section */}
         <div className="w-full lg:w-64 flex flex-col gap-6">
           <Card className="bg-[#1f2933] border-none rounded-lg space-y-2">
             <p className="font-semibold pb-3 text-white">Add to card</p>
@@ -127,7 +119,6 @@ export const TaskPage = () => {
             </Button>
           </Card>
 
-          {/* Power-Ups */}
           <Card className="bg-[#1f2933] border-none rounded-lg space-y-2">
             <p className="font-semibold pb-3 text-white">Power-Ups</p>
             <Button

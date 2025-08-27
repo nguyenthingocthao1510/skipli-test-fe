@@ -4,7 +4,6 @@ import { Board } from "../../helpers/types/board";
 import fetcher from "../fetcher";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { UserLogin } from "../../helpers/types/login";
 
 const useGetBoards = () => {
   const query = "/board/boards";

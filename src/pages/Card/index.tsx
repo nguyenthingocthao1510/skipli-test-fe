@@ -15,8 +15,6 @@ import {
   UserOutlined,
   PlusOutlined,
   UsergroupAddOutlined,
-  DollarOutlined,
-  DollarCircleFilled,
   CopyOutlined,
 } from "@ant-design/icons";
 import { useParams } from "react-router";

@@ -1,6 +1,5 @@
 "use-client";
 import useSWR from "swr";
-import swr from "swr";
 import { TCard } from "../../helpers/types/card";
 import fetcher from "../fetcher";
 import Cookies from "js-cookie";

@@ -22,7 +22,7 @@ import { Content } from "antd/es/layout/layout";
 import FooterComponent from "../../components/Footer";
 import { boardApi, useGetBoards } from "../../services/BoardService";
 import { Board } from "../../helpers/types/board";
-import { data, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { useState, ChangeEvent } from "react";
 import { FieldConfig } from "../../components/FormComponent/fieldConfig";
 import * as yup from "yup";
