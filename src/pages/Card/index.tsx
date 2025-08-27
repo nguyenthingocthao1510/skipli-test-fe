@@ -1,10 +1,23 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { Layout, Button, Spin, Card, Typography } from "antd";
+import {
+  Layout,
+  Button,
+  Spin,
+  Card,
+  Typography,
+  Modal,
+  Input,
+  message,
+} from "antd";
 import {
   EllipsisOutlined,
   TeamOutlined,
   UserOutlined,
   PlusOutlined,
+  UsergroupAddOutlined,
+  DollarOutlined,
+  DollarCircleFilled,
+  CopyOutlined,
 } from "@ant-design/icons";
 import { useParams } from "react-router";
 import axios from "axios";
@@ -14,6 +27,7 @@ import HeaderComponent from "../../components/Header";
 import FooterComponent from "../../components/Footer";
 import { useGetAllCards } from "../../services/CardService";
 import { ListComponent } from "./ListComponent";
+import { boardApi } from "../../services/BoardService";
 
 const { Sider, Content } = Layout;
 const { Title } = Typography;
@@ -22,6 +36,9 @@ export const BoardPage: React.FC = () => {
   const { boardId } = useParams();
   const { data: cards } = useGetAllCards(boardId ?? "");
   const [userMap, setUserMap] = useState<Record<string, string>>({});
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [emailValue, setEmailValue] = useState<string>("");
+  const [messageApi, contextHolder] = message.useMessage();
 
   const API_URL = process.env.REACT_APP_RESPONSE_API_URL;
   const token = Cookies.get("token");
@@ -48,8 +65,21 @@ export const BoardPage: React.FC = () => {
       .catch((err) => console.error("Failed to load users", err));
   }, [memberIds]);
 
+  const handleInvite = () => {
+    boardApi
+      .invitePeople(emailValue, boardId || "")
+      .then((res) => {
+        messageApi.success("Invite successfully");
+        setModalOpen(false);
+      })
+      .catch((err) => {
+        messageApi.error("Invite failed");
+      });
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
+      {contextHolder}
       <HeaderComponent />
 
       <Layout className="flex-1">
@@ -91,10 +121,16 @@ export const BoardPage: React.FC = () => {
         </Sider>
 
         <Content className="bg-white">
-          <div className="w-full bg-cyan-500">
-            <Title level={4} className="!text-white font-medium py-2 px-4">
+          <div className="w-full bg-cyan-500 flex justify-between py-2 px-4">
+            <Title level={4} className="!text-white font-medium ">
               My Trello Board
             </Title>
+            <Button
+              onClick={() => setModalOpen(true)}
+              icon={<UsergroupAddOutlined />}
+            >
+              Invite member
+            </Button>
           </div>
 
           <div className="p-4">
@@ -119,6 +155,27 @@ export const BoardPage: React.FC = () => {
       </Layout>
 
       <FooterComponent />
+
+      <Modal
+        title="Invite to Board"
+        open={modalOpen}
+        okText="Invite"
+        onOk={handleInvite}
+        onCancel={() => {
+          setModalOpen(false);
+        }}
+      >
+        <Input
+          placeholder="Email address or name"
+          value={emailValue}
+          onChange={(e) => setEmailValue(e.target.value)}
+        ></Input>
+
+        <div className="flex justify-between mt-3">
+          <p>Invite someone to this Workspace with a link:</p>
+          <Button icon={<CopyOutlined />}>Copy link</Button>
+        </div>
+      </Modal>
     </div>
   );
 };
