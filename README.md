@@ -93,7 +93,7 @@ npm start
 - Add descriptions and comments
 - Attach branches, commits, issues, pull requests
 
-  ## Screenshot from my web:
+## Screenshot from my web:
 1.	Login:
 <img width="975" height="426" alt="image" src="https://github.com/user-attachments/assets/246d3e39-51e2-4b28-95ba-0413bbee03d4" />
 
