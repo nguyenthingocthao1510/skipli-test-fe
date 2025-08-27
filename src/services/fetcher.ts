@@ -12,7 +12,8 @@ const fetcher = (url: string) => {
     },
   }).then((res) => {
     if (!res.ok) throw new Error("Connection failed!");
-    return res.json().then((json) => json.boards);
+    // return res.json().then((json) => json.boards);
+    return res.json();
   });
 };
 

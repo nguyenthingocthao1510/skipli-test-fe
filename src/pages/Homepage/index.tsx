@@ -22,7 +22,7 @@ import { Content } from "antd/es/layout/layout";
 import FooterComponent from "../../components/Footer";
 import { boardApi, useGetBoards } from "../../services/BoardService";
 import { Board } from "../../helpers/types/board";
-import { useNavigate } from "react-router";
+import { data, useNavigate } from "react-router";
 import { useState, ChangeEvent } from "react";
 import { FieldConfig } from "../../components/FormComponent/fieldConfig";
 import * as yup from "yup";
@@ -40,7 +40,6 @@ const Homepage = () => {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [overlayId, setOverlayId] = useState<string | null>(null);
 
-  // form validation
   const schema = yup.object({
     name: yup.string().required("Board name is required"),
   });
@@ -89,7 +88,6 @@ const Homepage = () => {
     },
   ];
 
-  // actions
   const handleEdit = (board: Board) => {
     form.setValues({
       name: board.name || "",

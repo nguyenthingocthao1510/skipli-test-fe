@@ -1,9 +1,15 @@
 import { Navigate } from "react-router";
 import { LoginPage } from "../pages/Login";
 import { RoutesProps } from "./routeTypes";
-import { homepageRoute, loginRoute, signUpRoute } from "./routes.constant";
+import {
+  boardRoute,
+  homepageRoute,
+  loginRoute,
+  signUpRoute,
+} from "./routes.constant";
 import { lazy } from "react";
 import { SignUpPage } from "../pages/SignUp";
+import { BoardPage } from "../pages/Card";
 
 const Homepage = lazy(() => import("../pages/Homepage"));
 
@@ -27,6 +33,12 @@ const routes: RoutesProps[] = [
     path: homepageRoute,
     name: "homepage",
     element: <Homepage />,
+    isPrivate: true,
+  },
+  {
+    path: boardRoute,
+    name: "board",
+    element: <BoardPage />,
     isPrivate: true,
   },
   {
