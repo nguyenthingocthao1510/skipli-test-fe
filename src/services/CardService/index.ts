@@ -12,6 +12,12 @@ export const useGetAllCards = (boardId: string) => {
   return { data, error, isLoading, mutate };
 };
 
+export const useGetCardDetail = (boardId: string, cardId: string) => {
+  const query = `/card/boards/${boardId}/cards/${cardId}`;
+  const { data, error, isLoading, mutate } = useSWR<TCard>(query, fetcher);
+  return { data, error, isLoading, mutate };
+};
+
 export const cardApi = {
   getAllCardsByStatus: function (boardId: string, status: string) {
     const API_URL = process.env.REACT_APP_RESPONSE_API_URL;

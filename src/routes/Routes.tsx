@@ -6,10 +6,12 @@ import {
   homepageRoute,
   loginRoute,
   signUpRoute,
+  taskRoute,
 } from "./routes.constant";
 import { lazy } from "react";
 import { SignUpPage } from "../pages/SignUp";
 import { BoardPage } from "../pages/Card";
+import { TaskPage } from "../pages/Task";
 
 const Homepage = lazy(() => import("../pages/Homepage"));
 
@@ -39,6 +41,12 @@ const routes: RoutesProps[] = [
     path: boardRoute,
     name: "board",
     element: <BoardPage />,
+    isPrivate: true,
+  },
+  {
+    path: taskRoute,
+    name: "task",
+    element: <TaskPage />,
     isPrivate: true,
   },
   {

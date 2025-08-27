@@ -101,7 +101,9 @@ export const ListComponent = ({ name, label }: Props) => {
               key={card.id}
               className="shadow-sm hover:shadow-md transition w-full cursor-pointer"
               bodyStyle={{ padding: "8px 12px" }}
-              onClick={() => navigate(`card/${card.id}`)}
+              onClick={() =>
+                navigate(`/card/${card.id}`, { state: { boardId } })
+              }
             >
               <div className="flex justify-between items-center">
                 <p className="m-0 font-medium text-gray-800 truncate">
