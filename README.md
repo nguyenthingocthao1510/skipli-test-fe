@@ -1,3 +1,5 @@
+## Link for deployment: https://skipli-test-fe.vercel.app/login
+
 # Frontend - Task Management App
 
 A React + TypeScript frontend for a task management app (like Trello) with boards, cards, and member management.
